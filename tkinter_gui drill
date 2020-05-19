@@ -3,8 +3,16 @@
 
 from tkinter import *
 import tkinter as tk
+import os
 
 class ParentWindow(Frame):
+
+    #def browse_button():
+        #global folder_path
+        #filename = filedialog.askdirectory()
+        #folder_path.set(filename)
+        #return filename
+
 
     def __init__(self, master):
         Frame.__init__ (self)
@@ -17,28 +25,26 @@ class ParentWindow(Frame):
         
     
         
-        self.btnBrowseOne = tk.Button(self.master, text="Browse...", width= 15, height= 1) 
-        self.btnBrowseOne.grid(row=10, column=0, padx=(10,0), pady=(35,0), sticky=NW)
-
-        self.btnBrowseTwo = tk.Button(self.master, text="Browse...", width= 15, height= 1) 
-        self.btnBrowseTwo.grid(row=11, column=0, padx=(10,0),pady=(10,0), sticky=NW)
+        self.btnBrowseOne = tk.Button(self.master, text="Browse...", width= 15, height= 1)
+        self.btnBrowseOne.grid(row=0, column=1, padx=(10,0), pady=(35,0), sticky=NW)
+    
+        
+        self.btnBrowseTwo = tk.Button(self.master, text="Browse...", width= 15, height= 1)
+        self.btnBrowseTwo.grid(row=1, column=1, padx=(10,0),pady=(10,0), sticky=NW)
 
         self.btnCheckFiles = tk.Button(self.master, text="Check for Files...", width= 15, height = 2)
-        self.btnCheckFiles.grid(row=12,column=0, padx=(10,0),pady=(10,0), sticky=NW)
+        self.btnCheckFiles.grid(row=2,column=1, padx=(10,0),pady=(10,0), sticky=NW)
         
         self.btnClose = tk.Button(self.master, text="Close Program", width= 15, height= 2)
-        self.btnClose.grid(row=12,column=2, padx=(50,0),pady=(10,0))
+        self.btnClose.grid(row=2,column=2, padx=(50,0),pady=(10,0), sticky=E)
 
     
-        self.entry_1 = tk.Entry(self.master, width = 30)
-        self.entry_2 = tk.Entry(self.master, width = 30)
+        self.entry_1 = tk.Entry(self.master, width = 50)
+        self.entry_2 = tk.Entry(self.master, width = 50)
 
-        self.entry_1.grid(row = 10, column = 1, padx = (10, 0), pady=(35,0))
-        self.entry_2.grid(row = 11, column = 1, padx = (10, 0), pady = (10,0))
-        
-
-    
-
+        self.entry_1.grid(row = 0, column = 2, padx = (10, 0), pady=(35,0), rowspan = 1, columnspan = 1)
+        self.entry_2.grid(row = 1, column = 2, padx = (10, 0), pady = (10,0), rowspan = 1, columnspan = 1)
+  
 
 
 
@@ -49,3 +55,4 @@ if __name__ == "__main__":
     root = Tk()
     App = ParentWindow(root)
     root.mainloop()
+
