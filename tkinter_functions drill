@@ -2,18 +2,13 @@
 # Edward Cheng
 
 from tkinter import *
+from tkinter import filedialog
 import tkinter as tk
 import os
 
 class ParentWindow(Frame):
 
-    def browse_button():
-        global folder_path
-        filename = filedialog.askdirectory()
-        folder_path.set(filename)
-        return filename
-
-
+    
     def __init__(self, master):
         Frame.__init__ (self)
 
@@ -25,17 +20,17 @@ class ParentWindow(Frame):
         
     
         
-        self.btnBrowseOne = tk.Button(self.master, text="Browse...", width= 15, height= 1, command = browse_button(self))
+        self.btnBrowseOne = tk.Button(self.master, text="Browse...", width= 15, height= 1, command = self.browse_button)
         self.btnBrowseOne.grid(row=0, column=1, padx=(10,0), pady=(35,0), sticky=NW)
     
         
-        self.btnBrowseTwo = tk.Button(self.master, text="Browse...", width= 15, height= 1)
+        self.btnBrowseTwo = tk.Button(self.master, text="Browse...", width= 15, height= 1, command = self.browse_button)
         self.btnBrowseTwo.grid(row=1, column=1, padx=(10,0),pady=(10,0), sticky=NW)
 
-        self.btnCheckFiles = tk.Button(self.master, text="Check for Files...", width= 15, height = 2)
+        self.btnCheckFiles = tk.Button(self.master, text="Check for Files...", width= 15, height = 2, command = self.browse_button)
         self.btnCheckFiles.grid(row=2,column=1, padx=(10,0),pady=(10,0), sticky=NW)
         
-        self.btnClose = tk.Button(self.master, text="Close Program", width= 15, height= 2)
+        self.btnClose = tk.Button(self.master, text="Close Program", width= 15, height= 2, command = self.cancel)
         self.btnClose.grid(row=2,column=2, padx=(50,0),pady=(10,0), sticky=E)
 
     
@@ -44,16 +39,31 @@ class ParentWindow(Frame):
 
         self.entry_1.grid(row = 0, column = 2, padx = (10, 0), pady=(35,0), rowspan = 1, columnspan = 1)
         self.entry_2.grid(row = 1, column = 2, padx = (10, 0), pady = (10,0), rowspan = 1, columnspan = 1)
+
+    FOLDER_PATH = r'C:\Users\edwar\OneDrive\Desktop\Tech Academy Projects\Python Demos'
+   
+    #def browse_button(self):
+        #global folder_path
+        #filename = filedialog.askdirectory()
+        #folder_path.set(filename)
+        #return filename
+
+    def browse_button(self):
+        current_directory = filedialog.askdirectory()
+        for folder in current_directory:
+            for file in folder:
+                if file.endswith('.py'):
+                    print(file)
+        file_path = os.path.join(current_directory, file)
+        print(file_path)
+
+    def cancel(self): 
+        self.master.destroy()
+    
+
+    #def display_file_path(self):
         
 
-
-
-    
-
-    
-
-    
-
     
 
 
@@ -65,22 +75,7 @@ class ParentWindow(Frame):
 
 if __name__ == "__main__":
     root = Tk()
+    
     App = ParentWindow(root)
     root.mainloop()
 
-
-    
-
-    
-
-
-
-
-
-
-
-
-if __name__ == "__main__":
-    root = Tk()
-    App = ParentWindow(root)
-    root.mainloop()
