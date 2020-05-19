@@ -40,13 +40,6 @@ class ParentWindow(Frame):
         self.entry_1.grid(row = 0, column = 2, padx = (10, 0), pady=(35,0), rowspan = 1, columnspan = 1)
         self.entry_2.grid(row = 1, column = 2, padx = (10, 0), pady = (10,0), rowspan = 1, columnspan = 1)
 
-    FOLDER_PATH = r'C:\Users\edwar\OneDrive\Desktop\Tech Academy Projects\Python Demos'
-   
-    #def browse_button(self):
-        #global folder_path
-        #filename = filedialog.askdirectory()
-        #folder_path.set(filename)
-        #return filename
 
     def browse_button(self):
         current_directory = filedialog.askdirectory()
@@ -74,8 +67,7 @@ class ParentWindow(Frame):
 
 
 if __name__ == "__main__":
-    root = Tk()
-    
+    root = Tk() 
     App = ParentWindow(root)
     root.mainloop()
 
