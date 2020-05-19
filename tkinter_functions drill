@@ -1,0 +1,68 @@
+# GUI Drill
+# Edward Cheng
+
+from tkinter import *
+import tkinter as tk
+
+class ParentWindow(Frame):
+
+    def browse_button():
+        global folder_path
+        filename = filedialog.askdirectory()
+        folder_path.set(filename)
+        return filename
+
+    
+
+    
+
+    def __init__(self, master):
+        Frame.__init__ (self)
+
+        self.master = master
+        self.master.resizable(width= False, height = False)
+        self.master.geometry("{}x{}".format(500,160))
+        self.master.title("Check Files")
+        self.master.config(bg='lightgray')
+        
+    
+        
+        self.btnBrowseOne = tk.Button(self.master, text="Browse...", width= 15, height= 1, command = browse_button)
+        self.btnBrowseOne.grid(row=10, column=0, padx=(10,0), pady=(35,0), sticky=NW)
+        self.btnBrowseOne.configure(command = but1)
+        
+        self.btnBrowseTwo = tk.Button(self.master, text="Browse...", width= 15, height= 1, command = browse_button)
+        self.btnBrowseTwo.grid(row=11, column=0, padx=(10,0),pady=(10,0), sticky=NW)
+
+        self.btnCheckFiles = tk.Button(self.master, text="Check for Files...", width= 15, height = 2, command = browse_button)
+        self.btnCheckFiles.grid(row=12,column=0, padx=(10,0),pady=(10,0), sticky=NW)
+        
+        self.btnClose = tk.Button(self.master, text="Close Program", width= 15, height= 2)
+        self.btnClose.grid(row=12,column=2, padx=(50,0),pady=(10,0))
+
+    
+        self.entry_1 = tk.Entry(self.master, width = 30)
+        self.entry_2 = tk.Entry(self.master, width = 30)
+
+        self.entry_1.grid(row = 10, column = 1, padx = (10, 0), pady=(35,0))
+        self.entry_2.grid(row = 11, column = 1, padx = (10, 0), pady = (10,0))
+        
+
+
+    
+
+    
+
+    
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    root = Tk()
+    App = ParentWindow(root)
+    root.mainloop()
