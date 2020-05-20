@@ -20,14 +20,14 @@ class ParentWindow(Frame):
         
     
         
-        self.btnBrowseOne = tk.Button(self.master, text="Browse...", width= 15, height= 1, command = self.browse_button)
+        self.btnBrowseOne = tk.Button(self.master, text="Browse...", width= 15, height= 1, command = self.browse_button1)
         self.btnBrowseOne.grid(row=0, column=1, padx=(10,0), pady=(35,0), sticky=NW)
     
         
-        self.btnBrowseTwo = tk.Button(self.master, text="Browse...", width= 15, height= 1, command = self.browse_button)
+        self.btnBrowseTwo = tk.Button(self.master, text="Browse...", width= 15, height= 1, command = self.browse_button2)
         self.btnBrowseTwo.grid(row=1, column=1, padx=(10,0),pady=(10,0), sticky=NW)
 
-        self.btnCheckFiles = tk.Button(self.master, text="Check for Files...", width= 15, height = 2, command = self.browse_button)
+        self.btnCheckFiles = tk.Button(self.master, text="Check for Files...", width= 15, height = 2, command = self.print_path)
         self.btnCheckFiles.grid(row=2,column=1, padx=(10,0),pady=(10,0), sticky=NW)
         
         self.btnClose = tk.Button(self.master, text="Close Program", width= 15, height= 2, command = self.cancel)
@@ -41,33 +41,31 @@ class ParentWindow(Frame):
         self.entry_2.grid(row = 1, column = 2, padx = (10, 0), pady = (10,0), rowspan = 1, columnspan = 1)
 
 
-    def browse_button(self):
+    def browse_button1(self):
         current_directory = filedialog.askdirectory()
-        for folder in current_directory:
-            for file in folder:
-                if file.endswith('.py'):
-                    print(file)
-        file_path = os.path.join(current_directory, file)
-        print(file_path)
+        self.entry_1.delete(0,END)
+        self.entry_1.insert(0,current_directory)
+
+    def browse_button2(self):
+        current_directory = filedialog.askdirectory()
+        self.entry_2.delete(0,END)
+        self.entry_2.insert(0,current_directory)
+
 
     def cancel(self): 
         self.master.destroy()
-    
 
-    #def display_file_path(self):
+    def print_path(self):
+        current_directory = filedialog.askdirectory()
+        self.entry_1.insert(0, current_directory)
+        self.entry_2.insert(0, current_directory)
+
         
-
-    
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
-    root = Tk() 
+    root = Tk()
+    
     App = ParentWindow(root)
     root.mainloop()
 
