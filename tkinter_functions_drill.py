@@ -57,8 +57,12 @@ class ParentWindow(Frame):
 
     def print_path(self):
         current_directory = filedialog.askdirectory()
-        self.entry_1.insert(0, current_directory)
-        self.entry_2.insert(0, current_directory)
+        for filename in os.listdir(current_directory):
+            if filename.endswith(".txt"):
+                print(os.path.join(current_directory, filename))
+                self.entry_1.insert(0,current_directory)
+            else:
+                continue
 
         
 
